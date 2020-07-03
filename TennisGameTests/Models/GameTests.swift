@@ -27,7 +27,7 @@ class GameTests: XCTestCase {
         game = nil
     }
     
-    //MARK: - Player One First serve
+    //MARK: - Player One First serve score 15 - 0
     
     func testGame_PlayerOneScoresFifteen_ShouldReturnPlayerOneScore() {
         //Arrange
@@ -38,7 +38,7 @@ class GameTests: XCTestCase {
         XCTAssertTrue(sut == "15","Player 1 expected to score 15")
     }
     
-    func testGame_PlayerTwoScoresZero_ShouldReturnPlayerTwoScore() {
+    func testGame_PlayerTwoScoresZeroWhenPlayerOneScoresFifteen_ShouldReturnPlayerTwoScore() {
         //Arrange
         game.playerPlays(selectedPlayer: .PlayerOne)
         //Act
@@ -58,4 +58,37 @@ class GameTests: XCTestCase {
 
     }
     
+    //MARK: - Player One First serve score 30 - 0
+    
+    func testGame_PlayerOneScoresThirty_ShouldReturnPlayerOneScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        //Act
+        let sut = game.scoreNumericWordTranslation(score: playerOne.score)
+        //Assert
+        XCTAssertTrue(sut == "30","Player 1 expected to score 30")
+    }
+    
+    func testGame_PlayerTwoScoresZeroWhenPlayerOneScoresThirty_ShouldReturnPlayerTwoScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        //Act
+        let sut = game.scoreNumericWordTranslation(score: playerTwo.score)
+        //Assert
+        XCTAssertTrue(sut == "0","Player 2 score will be love")
+
+    }
+    
+    func testGame_GameScoreAfterPlayerOneWins30_ShouldReturnScore(){
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        //Act
+        let sut = game.score()
+        //Arrange
+        XCTAssertTrue(sut == "Player 1 thirty - Player 2 love", "Should return player 1 15 and player two love")
+
+    }
 }

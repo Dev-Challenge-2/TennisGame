@@ -52,6 +52,8 @@ class Game {
             return "love"
         case 1:
             return "fifteen"
+        case 2:
+            return "thirty"
         default:
             return ""
             
@@ -68,6 +70,8 @@ class Game {
             return String(score)
         case 1:
             return "15"
+        case 2:
+            return "30"
         default:
             return ""
         }
