@@ -27,7 +27,7 @@ class GameTests: XCTestCase {
         game = nil
     }
     
-    //MARK: - Player One First serve score 15 - 0
+    //MARK: - Test cases for score 15 - 0
     
     func testGame_PlayerOneScoresFifteen_ShouldReturnPlayerOneScore() {
         //Arrange
@@ -58,7 +58,7 @@ class GameTests: XCTestCase {
 
     }
     
-    //MARK: - Player One First serve score 30 - 0
+    //MARK: - Test cases for score 30 - 0
     
     func testGame_PlayerOneScoresThirty_ShouldReturnPlayerOneScore() {
         //Arrange
@@ -91,7 +91,7 @@ class GameTests: XCTestCase {
         XCTAssertTrue(sut == "Player 1 thirty - Player 2 love", "Should return player 1 thirty and player two love")
     }
     
-    //MARK: - Player One First serve score 40 - 0
+    //MARK: - Test cases for score 40 - 0
     
     func testGame_PlayerOneScoresForty_ShouldReturnPlayerOneScore() {
          //Arrange
@@ -124,5 +124,36 @@ class GameTests: XCTestCase {
         let sut = game.score()
         //Arrange
         XCTAssertTrue(sut == "Player 1 forty - Player 2 love", "Should return player 1 forty and player two love")
+    }
+    
+    //MARK: - Test cases for score 0 - 15
+    
+    func testGame_PlayerTwoScoresFifteen_ShouldReturnPlayerTwoScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        //Act
+        let sut = game.scoreNumericWordTranslation(score: playerTwo.score)
+        //Assert
+        XCTAssertTrue(sut == "15","Player 2 expected to score 15")
+    }
+    
+    func testGame_PlayerOneScoresZeroWhenPlayerTwoScoresFifteen_ShouldReturnPlayerOneScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        //Act
+        let sut = game.scoreNumericWordTranslation(score: playerOne.score)
+        //Assert
+        XCTAssertTrue(sut == "0","Player 1 score will be love")
+
+    }
+
+    func testGame_GameScoreAfterPlayerTwoWinsFifteen_ShouldReturnScore(){
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        //Act
+        let sut = game.score()
+        //Arrange
+        XCTAssertTrue(sut == "Player 1 love - Player 2 fifteen", "Should return player 1 love and player two fifteen")
+
     }
 }

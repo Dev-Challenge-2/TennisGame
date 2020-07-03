@@ -24,6 +24,8 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func playerTwoAction(_ sender: UIButton) {
+        presenter.game.playerPlays(selectedPlayer: .PlayerTwo)
+        updateScore()
     }
     
     func updateScore(){
