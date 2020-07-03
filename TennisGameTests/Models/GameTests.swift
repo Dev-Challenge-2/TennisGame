@@ -220,7 +220,34 @@ class GameTests: XCTestCase {
         game.playerPlays(selectedPlayer: .PlayerTwo)
         //Act
         let sut = game.score()
-        //Arrange
+        //Assert
         XCTAssertTrue(sut == "Player 1 love - Player 2 forty", "Should return player 1 love and player two forty")
     }
+    
+    //MARK: - Test cases for score 15 - 15
+    
+    func testGame_PlayerOneScoresFifteenAndPlayerTwoScoresFifteen_ShoudReturnScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        //Act
+        let sut = game.score()
+        //Assert
+        XCTAssertTrue(sut == "Player 1 fifteen - Player 2 fifteen", "Should return player 1 fifteen and player two fifteen")
+    }
+    
+    //MARK: - Test cases for score 30 - 30
+
+    func testGame_PlayerOneScoresThirtyAndPlayerTwoScoresThirty_ShoudReturnScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        //Act
+        let sut = game.score()
+        //Assert
+        XCTAssertTrue(sut == "Player 1 thirty - Player 2 thirty", "Should return player 1 fifteen and player two fifteen")
+    }
+
 }
