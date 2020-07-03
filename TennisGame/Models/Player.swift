@@ -8,10 +8,11 @@
 
 import Foundation
 
+
 class Player {
     
-     var name: String
-     var score: Int
+    var name: String
+    var score: Int
     
     init(playerName:String) {
         self.name = playerName

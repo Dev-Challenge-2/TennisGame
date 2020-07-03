@@ -11,6 +11,8 @@ import XCTest
 
 class PlayerTests: XCTestCase {
     
+    //MARK: - Test case to initialise score and players
+    
     func testPlayer_InitialState_ShouldReturnZero() {
         //Arrange
         let sut = Player(playerName: "Player 1")
@@ -19,6 +21,8 @@ class PlayerTests: XCTestCase {
         //Assert
         XCTAssertTrue(initialScore == 0,"Initial score of Player is zero")
     }
+    
+    //MARK: - Test case for score update
     
     func testPlayer_PlayerStartsGame_ShouldUpdateScore() {
         //Arrange

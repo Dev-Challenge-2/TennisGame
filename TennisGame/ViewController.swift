@@ -8,13 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GameViewController: UIViewController {
 
+    @IBOutlet weak var scoreMessage: UILabel!
+    @IBOutlet weak var playerTwoScore: UILabel!
+    @IBOutlet weak var playerOneScore: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func playerOneAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func playerTwoAction(_ sender: UIButton) {
+    }
 }
 
