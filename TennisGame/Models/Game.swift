@@ -54,6 +54,8 @@ class Game {
             return "fifteen"
         case 2:
             return "thirty"
+        case 3:
+            return "forty"
         default:
             return ""
             
@@ -72,6 +74,8 @@ class Game {
             return "15"
         case 2:
             return "30"
+        case 3:
+            return "40"
         default:
             return ""
         }
