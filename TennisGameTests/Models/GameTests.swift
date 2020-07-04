@@ -359,5 +359,41 @@ class GameTests: XCTestCase {
         XCTAssertTrue(sut == "Player 2 Advantage", "Should display score for Player 2 advantage")
     }
 
+    //MARK: - Test cases for Advantage Breaker
+    
+    func testGame_AdvantageBreakerPlayerOne_ShouldReturnScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+
+        //Act
+       let sut = game.playerScore(selectedPlayer: .PlayerOne)
+        //Assert
+        XCTAssertTrue(sut == "40", "Player 1 score for Deuce")
+    }
+
+    func testGame_AdvantageBreakerPlayerTwo_ShouldReturnScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+
+        //Act
+       let sut = game.playerScore(selectedPlayer: .PlayerTwo)
+        //Assert
+        XCTAssertTrue(sut == "40", "Player 2 score for Deuce")
+    }
+
 
 }

@@ -69,6 +69,15 @@ class Game {
             return "AD"
         }
         
+        if(opponentScore >= 4 && opponentScore == score + 1) {
+            return "40"
+        }
+        
+        if(score >= 4 && score == opponentScore) {
+            return "40"
+        }
+
+        
         switch score {
         case 0:
             return String(score)
