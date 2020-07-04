@@ -295,6 +295,69 @@ class GameTests: XCTestCase {
 
     }
 
+    //MARK: - Test cases for Player 1 Advantage
+
+    func testGame_AdvantageForPlayerOne_ShouldReturnScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        //Act
+       let sut = game.playerScore(selectedPlayer: .PlayerOne)
+        //Assert
+        XCTAssertTrue(sut == "AD", "Should display score for Player 1 advantage")
+    }
+    
+    func testGame_GameScorePlayerOneAdvantage_ShouldReturnScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        //Act
+        let sut = game.score()
+        //Assert
+        XCTAssertTrue(sut == "Player 1 Advantage", "Should display score for Player 1 advantage")
+    }
+    
+    //MARK: - Test cases for Player 2 Advantage
+
+    func testGame_AdvantageForPlayerTwo_ShouldReturnScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        //Act
+       let sut = game.playerScore(selectedPlayer: .PlayerTwo)
+        //Assert
+        XCTAssertTrue(sut == "AD", "Should display score for Player 2 advantage")
+    }
+    
+    func testGame_GameScorePlayerTwoAdvantage_ShouldReturnScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        //Act
+        let sut = game.score()
+        //Assert
+        XCTAssertTrue(sut == "Player 2 Advantage", "Should display score for Player 2 advantage")
+    }
 
 
 }

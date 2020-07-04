@@ -52,6 +52,8 @@ class Game {
         
         if isDeuce() {
             return "Deuce"
+        }else if hasAdvantage() {
+            return playerWithHighestScore() + " Advantage"
         } else {
             let playerOneScore = "\(playerOne.name) \(pointsToWordTranslation(scores:playerOne.score)) - "
             let playerTwoScore = "\(playerTwo.name) \(pointsToWordTranslation(scores:playerTwo.score))"
@@ -62,6 +64,10 @@ class Game {
     //MARK: - Convert scores to Actual game values
     
     func scoreNumericWordTranslation(score:Int, opponentScore: Int) -> String {
+        
+        if(score >= 4 && score == opponentScore + 1 ) {
+            return "AD"
+        }
         
         switch score {
         case 0:
@@ -83,6 +89,24 @@ class Game {
         return playerOne.score >= 3 && playerTwo.score == playerOne.score
     }
     
+    private func hasAdvantage() -> Bool {
+        if playerOne.score >= 4 && playerOne.score == playerTwo.score + 1 {
+            return true
+        }else if playerTwo.score >= 4 && playerTwo.score == playerOne.score + 1 {
+            return true
+        }else {
+            return false
+        }
+    }
+    
+    private func playerWithHighestScore() -> String {
+        if (playerOne.score > playerTwo.score) {
+            return playerOne.name;
+        } else {
+            return playerTwo.name;
+        }
+    }
+
     private func pointsToWordTranslation(scores:Int) -> String {
         
         switch scores {
