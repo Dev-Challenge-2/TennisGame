@@ -32,40 +32,36 @@ class Game {
         case .PlayerTwo:
             self.playerTwo.play()
         }
-        
     }
     
-    //MARK: - Display scores at end of each serve
+    //MARK: - Display Player scores
+    
+    func playerScore(selectedPlayer: SelectedPlayer) -> String {
+        
+        switch selectedPlayer {
+        case .PlayerOne:
+            return scoreNumericWordTranslation(score: playerOne.score, opponentScore: playerTwo.score)
+        case .PlayerTwo:
+            return scoreNumericWordTranslation(score: playerTwo.score, opponentScore: playerOne.score)
+        }
+    }
+    
+    //MARK: - Display Game score
     
     func score() -> String {
         
-        let playerOneScore = "\(self.playerOne.name) \(pointsToWordTranslation(scores:self.playerOne.score)) - "
-        let playerTwoScore = "\(self.playerTwo.name) \(pointsToWordTranslation(scores:self.playerTwo.score))"
-        return playerOneScore + playerTwoScore
-    }
-    
-    //MARK: - Convert scores to word
-    
-    func pointsToWordTranslation(scores:Int) -> String {
-        switch scores {
-        case 0:
-            return "love"
-        case 1:
-            return "fifteen"
-        case 2:
-            return "thirty"
-        case 3:
-            return "forty"
-        default:
-            return ""
-            
+        if isDeuce() {
+            return "Deuce"
+        } else {
+            let playerOneScore = "\(playerOne.name) \(pointsToWordTranslation(scores:playerOne.score)) - "
+            let playerTwoScore = "\(playerTwo.name) \(pointsToWordTranslation(scores:playerTwo.score))"
+            return playerOneScore + playerTwoScore
         }
-        
     }
     
     //MARK: - Convert scores to Actual game values
     
-    func scoreNumericWordTranslation(score:Int) -> String {
+    func scoreNumericWordTranslation(score:Int, opponentScore: Int) -> String {
         
         switch score {
         case 0:
@@ -79,7 +75,28 @@ class Game {
         default:
             return ""
         }
-        
     }
     
+    //MARK: - Private Methods
+    
+    private func isDeuce() -> Bool {
+        return playerOne.score >= 3 && playerTwo.score == playerOne.score
+    }
+    
+    private func pointsToWordTranslation(scores:Int) -> String {
+        
+        switch scores {
+        case 0:
+            return "love"
+        case 1:
+            return "fifteen"
+        case 2:
+            return "thirty"
+        case 3:
+            return "forty"
+        default:
+            return "0"
+            
+        }
+    }
 }

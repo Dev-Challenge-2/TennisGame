@@ -20,17 +20,17 @@ class GameViewController: UIViewController {
     
     @IBAction func playerOneAction(_ sender: UIButton) {
         presenter.game.playerPlays(selectedPlayer: .PlayerOne)
-        updateScore()
+        updateScores()
     }
     
     @IBAction func playerTwoAction(_ sender: UIButton) {
         presenter.game.playerPlays(selectedPlayer: .PlayerTwo)
-        updateScore()
+        updateScores()
     }
     
-    func updateScore(){
-        _ = presenter.playerScore(selectedPlayer: .PlayerOne)
-        _ = presenter.playerScore(selectedPlayer: .PlayerTwo)
+    func updateScores() {
+        _ = presenter.playerOneScore()
+        _ = presenter.playerTwoScore()
         _ = presenter.displayScore()
     }
     

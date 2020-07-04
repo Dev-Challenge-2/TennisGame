@@ -21,17 +21,14 @@ class GamePresenter {
         game = Game(firstPlayer: playerOne, secondPlayer: playerTwo)
     }
     
-    func playerScore(selectedPlayer: SelectedPlayer) -> String {
-        
-        switch selectedPlayer {
-        case .PlayerOne:
-            view?.playerOneScore(playerOneScore: game.scoreNumericWordTranslation(score: playerOne.score))
-            return game.scoreNumericWordTranslation(score: playerOne.score)
-        case .PlayerTwo:
-            view?.playerTwoScore(playerTwoScore: game.scoreNumericWordTranslation(score: playerTwo.score))
-            return game.scoreNumericWordTranslation(score: playerTwo.score)
-        }
-        
+    func playerOneScore() -> String {
+        view?.playerOneScore(playerOneScore: game.playerScore(selectedPlayer: .PlayerOne))
+        return game.playerScore(selectedPlayer: .PlayerOne)
+    }
+    
+    func playerTwoScore() -> String {
+        view?.playerTwoScore(playerTwoScore: game.playerScore(selectedPlayer: .PlayerTwo))
+        return game.playerScore(selectedPlayer: .PlayerTwo)
     }
     
     func displayScore() -> String {

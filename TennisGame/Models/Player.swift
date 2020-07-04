@@ -20,6 +20,6 @@ class Player {
     }
     
     func play() {
-        score = score + 1
+        score += 1
     }
 }
