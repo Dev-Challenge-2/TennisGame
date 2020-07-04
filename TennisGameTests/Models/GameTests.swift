@@ -395,5 +395,93 @@ class GameTests: XCTestCase {
         XCTAssertTrue(sut == "40", "Player 2 score for Deuce")
     }
 
+    //MARK: - Test cases for Player 1 Wins
+    
+    func testGame_PlayerOneScorePlayerOneWins_ShouldResetScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        //Act
+        let sut = game.playerScore(selectedPlayer: .PlayerOne)
+        //Assert
+        XCTAssertTrue(sut == "0", "Should reset Player 1 score")
 
+    }
+    
+    func testGame_PlayerTwoScorePlayerOneWins_ShouldResetScore() {
+        //Arrange
+         game.playerPlays(selectedPlayer: .PlayerOne)
+         game.playerPlays(selectedPlayer: .PlayerOne)
+         game.playerPlays(selectedPlayer: .PlayerTwo)
+         game.playerPlays(selectedPlayer: .PlayerTwo)
+         game.playerPlays(selectedPlayer: .PlayerOne)
+         game.playerPlays(selectedPlayer: .PlayerOne)
+         //Act
+         let sut = game.playerScore(selectedPlayer: .PlayerTwo)
+         //Assert
+         XCTAssertTrue(sut == "0", "Should reset Player 2 score")
+    }
+
+    func testGame_PlayerOneWins_ShoudReturnScore() {
+        //Arrange
+         game.playerPlays(selectedPlayer: .PlayerOne)
+         game.playerPlays(selectedPlayer: .PlayerOne)
+         game.playerPlays(selectedPlayer: .PlayerTwo)
+         game.playerPlays(selectedPlayer: .PlayerTwo)
+         game.playerPlays(selectedPlayer: .PlayerOne)
+         game.playerPlays(selectedPlayer: .PlayerOne)
+         //Act
+         let sut = game.score()
+         //Assert
+         XCTAssertTrue(sut == "Player 1 wins", "Should return player 1 wins")
+    }
+    
+    //MARK: - Test cases for Player 2 Wins
+    
+    func testGame_PlayerTwoScorePlayerTwoWins_ShouldResetScore() {
+        //Arrange
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerOne)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        game.playerPlays(selectedPlayer: .PlayerTwo)
+        //Act
+        let sut = game.playerScore(selectedPlayer: .PlayerTwo)
+        //Assert
+        XCTAssertTrue(sut == "0", "Should reset Player 2 score")
+
+    }
+    
+    func testGame_PlayerOneScorePlayerTwoWins_ShouldResetScore() {
+        //Arrange
+         game.playerPlays(selectedPlayer: .PlayerOne)
+         game.playerPlays(selectedPlayer: .PlayerOne)
+         game.playerPlays(selectedPlayer: .PlayerTwo)
+         game.playerPlays(selectedPlayer: .PlayerTwo)
+         game.playerPlays(selectedPlayer: .PlayerTwo)
+         game.playerPlays(selectedPlayer: .PlayerTwo)
+         //Act
+         let sut = game.playerScore(selectedPlayer: .PlayerOne)
+         //Assert
+         XCTAssertTrue(sut == "0", "Should reset Player 1 score")
+    }
+
+    func testGame_PlayerTwoWins_ShoudReturnScore() {
+        //Arrange
+         game.playerPlays(selectedPlayer: .PlayerOne)
+         game.playerPlays(selectedPlayer: .PlayerOne)
+         game.playerPlays(selectedPlayer: .PlayerTwo)
+         game.playerPlays(selectedPlayer: .PlayerTwo)
+         game.playerPlays(selectedPlayer: .PlayerTwo)
+         game.playerPlays(selectedPlayer: .PlayerTwo)
+         //Act
+         let sut = game.score()
+         //Assert
+         XCTAssertTrue(sut == "Player 2 wins", "Should return player 2 wins")
+    }
 }

@@ -52,8 +52,10 @@ class Game {
         
         if isDeuce() {
             return "Deuce"
-        }else if hasAdvantage() {
+        } else if hasAdvantage() {
             return playerWithHighestScore() + " Advantage"
+        } else if hasWinner() {
+            return playerWithHighestScore() + " wins"
         } else {
             let playerOneScore = "\(playerOne.name) \(pointsToWordTranslation(scores:playerOne.score)) - "
             let playerTwoScore = "\(playerTwo.name) \(pointsToWordTranslation(scores:playerTwo.score))"
@@ -75,6 +77,14 @@ class Game {
         
         if(score >= 4 && score == opponentScore) {
             return "40"
+        }
+        
+        if(score >= 4 && score >= opponentScore + 2 ) {
+            return "0"
+        }
+        
+        if(opponentScore >= 4 && opponentScore >= score + 2) {
+            return "0"
         }
 
         
@@ -115,6 +125,20 @@ class Game {
             return playerTwo.name;
         }
     }
+
+    private func hasWinner() -> Bool {
+        if(playerOne.score >= 4 && playerOne.score >= playerTwo.score + 2 ) {
+            return true
+        }else if (playerTwo.score >= 4 && playerTwo.score  >= playerOne.score + 2) {
+            return true
+        }else {
+            return false
+        }
+    }
+    
+//    private func playerScoreAfterWinning() -> String {
+//
+//    }
 
     private func pointsToWordTranslation(scores:Int) -> String {
         

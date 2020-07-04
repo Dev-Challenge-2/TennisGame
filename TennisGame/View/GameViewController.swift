@@ -28,6 +28,10 @@ class GameViewController: UIViewController {
         updateScores()
     }
     
+    @IBAction func clearButtonPressed(_ sender: UIButton) {
+        _ = presenter.resetScore()
+    }
+    
     func updateScores() {
         _ = presenter.playerOneScore()
         _ = presenter.playerTwoScore()
