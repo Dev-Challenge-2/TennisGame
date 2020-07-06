@@ -1,18 +1,7 @@
-//
-//  Player.swift
-//  TennisGame
-//
-//  Created by Karthik Ravikumar on 01/07/20.
-//  Copyright © 2020 Karthik Ravikumar. All rights reserved.
-//
-
-import Foundation
-
-
-class Player {
+final class Player {
     
-    var name: String
-    var score: Int
+   private(set) var name: String
+   private(set) var score: Int
     
     init(playerName:String) {
         self.name = playerName
@@ -21,5 +10,9 @@ class Player {
     
     func play() {
         score += 1
+    }
+    
+    func clearScore() {
+        score = 0
     }
 }

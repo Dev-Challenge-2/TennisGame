@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  TennisGame
-//
-//  Created by Karthik Ravikumar on 01/07/20.
-//  Copyright © 2020 Karthik Ravikumar. All rights reserved.
-//
-
 import UIKit
 
 class GameViewController: UIViewController {
@@ -19,12 +11,12 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func playerOneAction(_ sender: UIButton) {
-        presenter.game.playerPlays(selectedPlayer: .PlayerOne)
+        presenter.game.playerPlays(selectedPlayer: .playerOne)
         updateScores()
     }
     
     @IBAction func playerTwoAction(_ sender: UIButton) {
-        presenter.game.playerPlays(selectedPlayer: .PlayerTwo)
+        presenter.game.playerPlays(selectedPlayer: .playerTwo)
         updateScores()
     }
     

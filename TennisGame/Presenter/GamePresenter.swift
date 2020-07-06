@@ -1,11 +1,3 @@
-//
-//  GamePresenter.swift
-//  TennisGame
-//
-//  Created by Karthik Ravikumar on 02/07/20.
-//  Copyright © 2020 Karthik Ravikumar. All rights reserved.
-//
-
 import Foundation
 
 class GamePresenter {
@@ -14,31 +6,28 @@ class GamePresenter {
     let playerTwo: Player
     let game: Game
     
-    init(view: GameView)  {
+    init(view: GameView?)  {
         self.view = view
         playerOne = Player(playerName: "Player 1")
         playerTwo = Player(playerName: "Player 2")
         game = Game(firstPlayer: playerOne, secondPlayer: playerTwo)
     }
     
-    func playerOneScore() -> String {
-        view?.playerOneScore(playerOneScore: game.playerScore(selectedPlayer: .PlayerOne))
-        return game.playerScore(selectedPlayer: .PlayerOne)
+    func playerOneScore() {
+        view?.playerOneScore(playerOneScore: game.playerScore(selectedPlayer: .playerOne))
     }
     
-    func playerTwoScore() -> String {
-        view?.playerTwoScore(playerTwoScore: game.playerScore(selectedPlayer: .PlayerTwo))
-        return game.playerScore(selectedPlayer: .PlayerTwo)
+    func playerTwoScore() {
+        view?.playerTwoScore(playerTwoScore: game.playerScore(selectedPlayer: .playerTwo))
     }
     
-    func displayScore() -> String {
+    func displayScore() {
         view?.display(scoreMessage: game.score())
-        return game.score()
     }
     
     func resetScore() {
-        playerOne.score = 0
-        playerTwo.score = 0
+        playerOne.clearScore()
+        playerTwo.clearScore()
         view?.playerOneScore(playerOneScore: "0")
         view?.playerTwoScore(playerTwoScore: "0")
         view?.display(scoreMessage: "Love All")
